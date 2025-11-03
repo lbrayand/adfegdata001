@@ -1,0 +1,28 @@
+{
+	"name": "Parquet_silver_products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cnxadlssilver",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"products": {
+				"type": "String",
+				"defaultValue": "products_@{formatDateTime(utcNow(), 'yyyyMMdd_HHmmss')}.parquet"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "products.parquet",
+				"folderPath": "silver",
+				"fileSystem": "datademo01"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
